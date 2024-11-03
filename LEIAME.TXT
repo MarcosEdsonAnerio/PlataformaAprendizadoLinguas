@@ -1,0 +1,26 @@
+INSTALE AS DEPENDENCIAS:
+
+SE FOR LINUX:
+sudo apt update && sudo apt install -y nodejs npm && npm install -g react-native-cli && npm install @react-navigation/native @react-navigation/stack axios && sudo snap install code --classic
+
+WINDOWNS:
+
+1. Baixar e instalar Node.js: https://nodejs.org/
+2. Verificar instalação:
+   node -v
+   npm -v
+
+3. Instalar React Native CLI:
+   npm install -g react-native-cli
+
+4. Instalar Chocolatey (opcional):
+   Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+
+5. Instalar Android Studio:
+   choco install -y androidstudio
+
+6. Instalar Visual Studio Code:
+   choco install -y vscode
+
+7. Instalar dependências de navegação e Axios no projeto:
+   npm install @react-navigation/native @react-navigation/stack axios

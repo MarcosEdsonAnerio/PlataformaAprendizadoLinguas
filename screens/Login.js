@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from 'react-native';
-import { checkLogin } from '../auth';
 
 const Login = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  // Credenciais fixas para teste
+  const TEST_EMAIL = 'teste@teste.com';
+  const TEST_PASSWORD = '123456';
+
   const handleLogin = () => {
-    const user = checkLogin(email, password);
-    if (user) {
-      navigation.navigate('Home', { user });
+    if (email === TEST_EMAIL && password === TEST_PASSWORD) {
+      navigation.navigate('Home', { user: { name: 'Usuário Teste', email } });
     } else {
       Alert.alert('Erro', 'Email ou senha incorretos.');
     }
@@ -34,9 +36,6 @@ const Login = ({ navigation }) => {
       />
       <TouchableOpacity style={styles.button} onPress={handleLogin}>
         <Text style={styles.buttonText}>Entrar</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate('Signup')}>
-        <Text style={styles.link}>Não tem uma conta? Cadastre-se</Text>
       </TouchableOpacity>
     </View>
   );
@@ -73,11 +72,6 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 16,
     fontWeight: 'bold',
-  },
-  link: {
-    color: '#007bff',
-    marginTop: 15,
-    textAlign: 'center',
   },
 });
 

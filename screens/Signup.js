@@ -1,19 +1,19 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from 'react-native';
-import { saveUser } from '../auth';
+import axios from 'axios';
 
 const Signup = ({ navigation }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSignup = () => {
-    if (name && email && password) {
-      saveUser(name, email, password);
+  const handleSignup = async () => {
+    try {
+      await axios.post('http://SEU_IP:5000/signup', { name, email, password });
       Alert.alert('Sucesso', 'Cadastro realizado com sucesso!');
       navigation.navigate('Login');
-    } else {
-      Alert.alert('Erro', 'Preencha todos os campos.');
+    } catch (error) {
+      Alert.alert('Erro', 'Erro ao cadastrar usuário.');
     }
   };
 

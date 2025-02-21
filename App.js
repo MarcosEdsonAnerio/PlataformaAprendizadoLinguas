@@ -6,13 +6,15 @@ import Games from './screens/games/Games';
 import Flashcards from './screens/games/Flashcards';
 import MemoryGame from './screens/games/MemoryGame';
 import CompleteSentence from './screens/games/CompleteSentence';
+import LoginScreen from './screens/login2';
 
 const Stack = createStackNavigator();
 
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
+      <Stack.Navigator initialRouteName="Login">
+        <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Home" component={Home} options={{ title: 'Início' }} />
         <Stack.Screen name="Games" component={Games} options={{ title: 'Jogos' }} />
         <Stack.Screen

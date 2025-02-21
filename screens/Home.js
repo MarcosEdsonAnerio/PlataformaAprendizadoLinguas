@@ -2,12 +2,12 @@ import React from 'react';
 import { View, Text, TouchableOpacity, FlatList, StyleSheet, Image } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 
-const Home = ({ navigation }) => {
-  // Dados fictícios do usuário
+const Home = ({ route, navigation }) => {
+  const { username } = route.params; // Pegando o nome do usuário
   const user = {
-    name: 'Marcão Sucão',
+    name: username,
     level: 'Intermediário',
-    photo: 'https://via.placeholder.com/150',
+    photo: 'https://placehold.co/600x400?text=Hello+World',
     activitiesCompleted: 45,
     totalActivities: 100,
     score: 1200,

@@ -14,17 +14,37 @@ Este repositório contém o código-fonte do aplicativo móvel interativo para e
 ## Estrutura do Projeto
 
 📂 projeto-aprendizado-linguas 
+
 ├── 📂 assets 
+
 ├── 📂 components 
+
 ├── 📂 contexts 
+
 ├── 📂 screens 
-│ ├── Home.js 
-│ ├── Games.js 
-│ ├── Flashcards.js 
-│ ├── MemoryGame.js 
-│ ├── CompleteSentence.js 
+
+│ ├── 📂 games 
+
+   │ ├── Home.js 
+   
+   │ ├── Games.js 
+   
+   │ ├── Flashcards.js 
+   
+   │ ├── MemoryGame.js 
+   
+   │ ├── CompleteSentence.js 
+   
+│ └── Home.js 
+
 │ └── Login.js 
+
+│ └── Profile.js 
+
+│ └── Signup.js 
+
 ├── 📄 App.js 
+
 └── 📄 auth.js
 
 ## Funcionalidades

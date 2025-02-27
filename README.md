@@ -13,8 +13,19 @@ Este repositório contém o código-fonte do aplicativo móvel interativo para e
 
 ## Estrutura do Projeto
 
-📂 projeto-aprendizado-linguas ├── 📂 assets ├── 📂 components ├── 📂 contexts ├── 📂 screens │ ├── Home.js │ ├── Games.js │ ├── Flashcards.js │ ├── MemoryGame.js │ ├── CompleteSentence.js │ └── Login.js ├── 📄 App.js └── 📄 auth.js
-
+📂 projeto-aprendizado-linguas 
+├── 📂 assets 
+├── 📂 components 
+├── 📂 contexts 
+├── 📂 screens 
+│ ├── Home.js 
+│ ├── Games.js 
+│ ├── Flashcards.js 
+│ ├── MemoryGame.js 
+│ ├── CompleteSentence.js 
+│ └── Login.js 
+├── 📄 App.js 
+└── 📄 auth.js
 
 ## Funcionalidades
 
@@ -30,7 +41,7 @@ Este repositório contém o código-fonte do aplicativo móvel interativo para e
 1. Clone o repositório:
    ```sh
    git clone https://github.com/seu-usuario/projeto-aprendizado-linguas.git
-   ```
+   
 2. Acesse o diretório do projeto:
   ```sh
   cd projeto-aprendizado-linguas
@@ -54,4 +65,4 @@ Este repositório contém o código-fonte do aplicativo móvel interativo para e
 
 ## Desenvolvedores
 
-Projeto desenvolvido sob orientação do professor Karan Luciano, por Marcos Edson Anerio e Sayara Kaylaine Oliveira Silva, no Instituto Federal de Rondônia (IFRO) - Campus Ji-Paraná.
+Projeto desenvolvido sob orientação do professor **Karan Luciano**, por **Marcos Edson Anerio** e **Sayara Kaylaine Oliveira Silva**, no Instituto Federal de Rondônia (IFRO) - Campus Ji-Paraná.

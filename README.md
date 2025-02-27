@@ -92,4 +92,4 @@ Este repositório contém o código-fonte do aplicativo móvel interativo para e
 
 ## Desenvolvedores
 
-Projeto desenvolvido sob orientação do professor ***Karan Luciano**, por **Marcos Edson Anerio** e **Sayara Kaylaine Oliveira Silva**, no Instituto Federal de Rondônia (IFRO) - Campus Ji-Paraná.
+Projeto desenvolvido sob orientação do professor **Karan Luciano**, por **Marcos Edson Anerio** e **Sayara Kaylaine Oliveira Silva**, no Instituto Federal de Rondônia (IFRO) - Campus Ji-Paraná.

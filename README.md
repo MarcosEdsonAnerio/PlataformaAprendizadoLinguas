@@ -43,7 +43,7 @@ Este repositório contém o código-fonte do aplicativo móvel interativo para e
 
 │ └── Signup.js 
 
-├── 📄 App.js 
+└── 📄 App.js 
 
 └── 📄 auth.js
 
@@ -61,7 +61,7 @@ Este repositório contém o código-fonte do aplicativo móvel interativo para e
 1. Clone o repositório:
    ```sh
    git clone https://github.com/seu-usuario/projeto-aprendizado-linguas.git
-   
+   ```
 2. Acesse o diretório do projeto:
   ```sh
   cd projeto-aprendizado-linguas

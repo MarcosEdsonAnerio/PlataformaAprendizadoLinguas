@@ -59,21 +59,28 @@ Este repositório contém o código-fonte do aplicativo móvel interativo para e
 ## Instalação e Execução
 
 1. Clone o repositório:
-   ```sh
-   git clone https://github.com/seu-usuario/projeto-aprendizado-linguas.git
-   ```
+
+    ```sh
+    git clone https://github.com/seu-usuario/projeto-aprendizado-linguas.git
+    ```
+
 2. Acesse o diretório do projeto:
-  ```sh
-  cd projeto-aprendizado-linguas
-  ```
+
+    ```sh
+    cd projeto-aprendizado-linguas
+    ```
+
 3. Instale as dependências:
-  ```sh
-  npm install
-  ```
+
+    ```sh
+    npm install
+    ```
+
 4. Inicie o Expo:
-  ```sh
-  npm start
-  ```
+
+    ```sh
+    npm start
+    ```
 
 ## Resultados Esperados
 
@@ -85,4 +92,4 @@ Este repositório contém o código-fonte do aplicativo móvel interativo para e
 
 ## Desenvolvedores
 
-Projeto desenvolvido sob orientação do professor **Karan Luciano**, por **Marcos Edson Anerio** e **Sayara Kaylaine Oliveira Silva**, no Instituto Federal de Rondônia (IFRO) - Campus Ji-Paraná.
+Projeto desenvolvido sob orientação do professor ***Karan Luciano**, por **Marcos Edson Anerio** e **Sayara Kaylaine Oliveira Silva**, no Instituto Federal de Rondônia (IFRO) - Campus Ji-Paraná.

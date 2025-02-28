@@ -18,10 +18,17 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.marcosedson.plataformaaprendizadolinguas"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "3e0b99f2-63a8-4527-9817-147095ab65ad"
+      }
+    },
+    "owner": "marcosedson"
   }
 }

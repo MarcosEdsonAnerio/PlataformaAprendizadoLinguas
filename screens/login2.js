@@ -12,7 +12,7 @@ const LoginScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Bem-vindo ao Language Learning!</Text>
+      <Text style={styles.title}>Bem-vindo a Plataforma de Aprendizado de Línguas!</Text>
       <TextInput
         style={styles.input}
         placeholder="Digite seu nome"

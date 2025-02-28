@@ -1,12 +1,14 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import LoginScreen from './screens/login2';
 import Home from './screens/Home';
 import Games from './screens/games/Games';
 import Flashcards from './screens/games/Flashcards';
 import MemoryGame from './screens/games/MemoryGame';
 import CompleteSentence from './screens/games/CompleteSentence';
-import LoginScreen from './screens/login2';
+import Hangman from './screens/games/Hangman'; 
+import FastTranslation from './screens/games/FastTranslation';
 
 const Stack = createStackNavigator();
 
@@ -31,6 +33,16 @@ const App = () => {
           name="CompleteSentence"
           component={CompleteSentence}
           options={{ title: 'CompleteSentence' }}
+        />
+        <Stack.Screen
+          name="Hangman"
+          component={Hangman} 
+          options={{ title: 'Jogo da Forca' }}
+        />
+        <Stack.Screen
+          name="FastTranslation"
+          component={FastTranslation}
+          options={{ title: 'Tradução Rápida' }}
         />
       </Stack.Navigator>
     </NavigationContainer>

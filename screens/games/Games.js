@@ -25,27 +25,27 @@ const Games = ({ navigation }) => {
       description: 'Pratique gramática completando frases.',
       icon: 'text-format',
       screen: 'CompleteSentence', // Nome da tela de destino (crie essa tela depois)
-    },
+    }, 
     {
       id: '4',
-      title: 'Quiz de Pronúncia',
-      description: 'Escute e escolha a palavra correta.',
-      icon: 'volume-up',
-      screen: 'PronunciationQuiz', // Nome da tela de destino (crie essa tela depois)
-    },
-    {
-      id: '5',
       title: 'Jogo da Forca',
       description: 'Adivinhe palavras antes de completar o boneco.',
       icon: 'mood',
       screen: 'Hangman', // Nome da tela de destino (crie essa tela depois)
     },
     {
-      id: '6',
+      id: '5',
       title: 'Tradução Rápida',
       description: 'Traduza palavras ou frases contra o tempo.',
       icon: 'timer',
       screen: 'FastTranslation', // Nome da tela de destino (crie essa tela depois)
+    },
+    {
+      id: '6',
+      title: 'Quiz de Pronúncia',
+      description: 'Escute e escolha a palavra correta.',
+      icon: 'volume-up',
+      screen: 'PronunciationQuiz', // Nome da tela de destino (crie essa tela depois)
     },
   ];
 

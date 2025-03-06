@@ -8,7 +8,6 @@ Este repositório contém o código-fonte do aplicativo móvel interativo para e
 
 - **React Native e Expo**: Desenvolvimento para Android e iOS.
 - **React Navigation**: Gerenciamento de navegação entre telas.
-- **Autenticação Customizada**: Implementada no arquivo `auth.js`.
 - **Organização Modular**: Estruturado com diretórios dedicados para melhor manutenção.
 
 ## Estrutura do Projeto

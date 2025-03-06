@@ -34,9 +34,13 @@ Este repositório contém o código-fonte do aplicativo móvel interativo para e
    
    │ ├── CompleteSentence.js 
    
+   │ ├── FastTranslation.js 
+   
+   │ ├── Hangman.js 
+   
 │ └── Home.js 
 
-│ └── Login.js 
+│ └── Login2.js 
 
 │ └── Profile.js 
 

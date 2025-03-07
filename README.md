@@ -20,6 +20,8 @@ Este repositório contém o código-fonte do aplicativo móvel interativo para e
 
 ├── 📂 contexts 
 
+   │ ├── ThemeContext.js 
+
 ├── 📂 screens 
 
 │ ├── 📂 games 
@@ -40,24 +42,23 @@ Este repositório contém o código-fonte do aplicativo móvel interativo para e
    
 │ └── Home.js 
 
-│ └── Login2.js 
+│ └── Login.js 
 
 │ └── Profile.js 
 
-│ └── Signup.js 
-
 └── 📄 App.js 
-
-└── 📄 auth.js
 
 ## Funcionalidades
 
-- **Tela de Login**: Entrada do usuário na plataforma.
+- **Tela Login**: Entrada do usuário na plataforma.
 - **Tela Home**: Menu principal com acesso às funcionalidades.
+- **Tela Profile**: Menu para editar foto de perfil e nome de usuário.
 - **Tela Games**: Hub de jogos educativos.
 - **Tela Flashcards**: Memorização de termos e definições.
 - **Tela MemoryGame**: Jogo da memória com associações.
 - **Tela CompleteSentence**: Exercícios para completar frases.
+- **Tela Hangman**: Exercícios de forca.
+- **Tela FastTranslation**: Exercícios de traduções rápidas.
 
 ## Instalação e Execução
 

@@ -1,67 +1,100 @@
-import React from 'react';
-import { View, Text, FlatList, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, FlatList, StyleSheet, Image, TouchableOpacity, TextInput, Alert } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
+import * as ImagePicker from 'expo-image-picker';
 
-const Profile = () => {
-  // Dados fictícios do usuário
-  const user = {
-    name: 'João Silva',
-    level: 'Intermediário',
-    photo: 'https://via.placeholder.com/150',
-    activitiesCompleted: 45,
-    totalActivities: 100,
-    score: 1200,
-    achievements: [
-      { id: '1', name: 'Iniciante', icon: 'star' },
-      { id: '2', name: 'Curioso', icon: 'lightbulb' },
-      { id: '3', name: 'Viajante', icon: 'flight' },
-    ],
-    recentActivities: [
-      { id: '1', name: 'Flashcards de Comida', date: '10/10/2023', score: 50 },
-      { id: '2', name: 'Quiz de Gramática', date: '09/10/2023', score: 30 },
-      { id: '3', name: 'Jogo de Pronúncia', date: '08/10/2023', score: 70 },
-    ],
+const Profile = ({ route, navigation }) => {
+  const { user: userParam, onSave } = route.params;
+  const [name, setName] = useState(userParam.name);
+  const [photo, setPhoto] = useState(userParam.photo);
+  const [isEditing, setIsEditing] = useState(false);
+
+  const handleSave = () => {
+    const updatedUser = { ...userParam, name, photo };
+    onSave(updatedUser);
+    setIsEditing(false);
+    navigation.goBack();
   };
 
-  // Função para calcular o progresso
-  const progress = (user.activitiesCompleted / user.totalActivities) * 100;
+  const handleCancel = () => {
+    setName(userParam.name);
+    setPhoto(userParam.photo);
+    setIsEditing(false);
+  };
+
+  const pickImage = async () => {
+    const permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
+    if (!permissionResult.granted) {
+      Alert.alert('Permissão negada', 'Precisamos de permissão para acessar suas fotos!');
+      return;
+    }
+
+    const result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing: true,
+      aspect: [1, 1],
+      quality: 1,
+    });
+
+    if (!result.canceled) {
+      setPhoto(result.assets[0].uri);
+    }
+  };
 
   return (
     <View style={styles.container}>
-      {/* Cabeçalho */}
       <View style={styles.header}>
-        <Image source={{ uri: user.photo }} style={styles.profilePhoto} />
-        <Text style={styles.userName}>{user.name}</Text>
-        <Text style={styles.userLevel}>{user.level}</Text>
+        <Image source={{ uri: photo }} style={styles.profilePhoto} />
+        {isEditing ? (
+          <TextInput
+            style={styles.input}
+            value={name}
+            onChangeText={setName}
+          />
+        ) : (
+          <>
+            <Text style={styles.userName}>{name}</Text>
+            <Text style={styles.userLevel}>{userParam.level}</Text>
+          </>
+        )}
       </View>
 
-      {/* Progresso */}
-      <View style={styles.progressContainer}>
-        <Text style={styles.progressTitle}>Progresso Geral</Text>
-        <View style={styles.progressBar}>
-          <View style={[styles.progressFill, { width: `${progress}%` }]} />
-        </View>
-        <Text style={styles.progressText}>
-          {user.activitiesCompleted} de {user.totalActivities} atividades concluídas
-        </Text>
+      {isEditing && (
+        <>
+          <View style={styles.urlContainer}>
+            <TextInput
+              style={styles.urlInput}
+              value={photo}
+              onChangeText={setPhoto}
+              placeholder="URL da foto"
+            />
+            <TouchableOpacity style={styles.imagePickerButton} onPress={pickImage}>
+              <Text style={styles.imagePickerButtonText}>Escolher Imagem</Text>
+            </TouchableOpacity>
+          </View>
+        </>
+      )}
+
+      <View style={styles.buttonContainer}>
+        {isEditing ? (
+          <>
+            <TouchableOpacity style={styles.button} onPress={handleSave}>
+              <Text style={styles.buttonText}>Salvar</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.button} onPress={handleCancel}>
+              <Text style={styles.buttonText}>Cancelar</Text>
+            </TouchableOpacity>
+          </>
+        ) : (
+          <TouchableOpacity style={styles.button} onPress={() => setIsEditing(true)}>
+            <Text style={styles.buttonText}>Editar</Text>
+          </TouchableOpacity>
+        )}
       </View>
 
-      {/* Pontuação e Conquistas */}
-      <View style={styles.statsContainer}>
-        <View style={styles.statItem}>
-          <Text style={styles.statValue}>{user.score}</Text>
-          <Text style={styles.statLabel}>Pontos</Text>
-        </View>
-        <View style={styles.statItem}>
-          <Text style={styles.statValue}>{user.achievements.length}</Text>
-          <Text style={styles.statLabel}>Conquistas</Text>
-        </View>
-      </View>
-
-      {/* Conquistas */}
       <Text style={styles.sectionTitle}>Conquistas</Text>
       <FlatList
-        data={user.achievements}
+        data={userParam.achievements}
         horizontal
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
@@ -73,10 +106,9 @@ const Profile = () => {
         contentContainerStyle={styles.achievementsList}
       />
 
-      {/* Atividades Recentes */}
       <Text style={styles.sectionTitle}>Atividades Recentes</Text>
       <FlatList
-        data={user.recentActivities}
+        data={userParam.recentActivities}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
           <View style={styles.activityCard}>
@@ -116,46 +148,54 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#555',
   },
-  progressContainer: {
-    marginBottom: 20,
-  },
-  progressTitle: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    marginBottom: 10,
-    color: '#333',
-  },
-  progressBar: {
-    height: 10,
-    backgroundColor: '#e9ecef',
+  input: {
+    borderWidth: 1,
+    borderColor: '#ccc',
+    padding: 8,
+    width: '80%',
+    marginVertical: 5,
     borderRadius: 5,
-    overflow: 'hidden',
+    textAlign: 'center',
   },
-  progressFill: {
-    height: '100%',
+  urlContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 50,
+  },
+  urlInput: {
+    borderWidth: 1,
+    borderColor: '#ccc',
+    padding: 8,
+    width: '80%',
+    marginVertical: 5,
+    borderRadius: 5,
+    textAlign: 'center',
+  },
+  imagePickerButton: {
     backgroundColor: '#28a745',
+    padding: 10,
+    borderRadius: 5,
+    marginLeft: 10,
   },
-  progressText: {
-    fontSize: 14,
-    color: '#555',
-    marginTop: 5,
+  imagePickerButtonText: {
+    color: '#fff',
+    fontWeight: 'bold',
   },
-  statsContainer: {
+  buttonContainer: {
     flexDirection: 'row',
-    justifyContent: 'space-around',
+    justifyContent: 'center',
     marginBottom: 20,
   },
-  statItem: {
-    alignItems: 'center',
+  button: {
+    backgroundColor: '#007bff',
+    padding: 10,
+    borderRadius: 5,
+    marginHorizontal: 5,
   },
-  statValue: {
-    fontSize: 24,
+  buttonText: {
+    color: '#fff',
     fontWeight: 'bold',
-    color: '#333',
-  },
-  statLabel: {
-    fontSize: 16,
-    color: '#555',
   },
   sectionTitle: {
     fontSize: 20,

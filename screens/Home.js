@@ -1,11 +1,10 @@
-import React from 'react';
+import React, { useState, useLayoutEffect } from 'react';
 import { View, Text, TouchableOpacity, FlatList, StyleSheet, Image } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 
 const Home = ({ route, navigation }) => {
-  const { username } = route.params; // Pegando o nome do usuário
-  const user = {
-    name: username,
+  const initialUser = {
+    name: route.params?.username || 'Usuário',
     level: 'Intermediário',
     photo: 'https://placehold.co/600x400?text=Hello+World',
     activitiesCompleted: 45,
@@ -23,8 +22,27 @@ const Home = ({ route, navigation }) => {
     ],
   };
 
-  // Função para calcular o progresso
+  const [user, setUser] = useState(initialUser);
   const progress = (user.activitiesCompleted / user.totalActivities) * 100;
+
+  // Configurando o header com o botão de editar perfil
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerRight: () => (
+        <TouchableOpacity
+          style={{ marginRight: 15 }}
+          onPress={() =>
+            navigation.navigate('Profile', {
+              user: user,
+              onSave: (updatedUser) => setUser(updatedUser),
+            })
+          }
+        >
+          <MaterialIcons name="build" size={24} color="#333" />
+        </TouchableOpacity>
+      ),
+    });
+  }, [navigation, user]);
 
   return (
     <View style={styles.container}>
